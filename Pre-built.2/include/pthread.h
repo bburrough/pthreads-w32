@@ -317,10 +317,12 @@ enum {
 #define HAVE_STRUCT_TIMESPEC
 #if !defined(_TIMESPEC_DEFINED)
 #define _TIMESPEC_DEFINED
+#if defined(_VCRT_BUILD) || defined(_CORECRT_BUILD) // VS 2015 ucrt version of time.h
 struct timespec {
         time_t tv_sec;
         long tv_nsec;
 };
+#endif
 #endif /* _TIMESPEC_DEFINED */
 #endif /* HAVE_STRUCT_TIMESPEC */
 
